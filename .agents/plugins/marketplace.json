@@ -1,0 +1,20 @@
+{
+  "name": "chattopod-local",
+  "interface": {
+    "displayName": "ChatToPod"
+  },
+  "plugins": [
+    {
+      "name": "chattopod",
+      "source": {
+        "source": "local",
+        "path": "./plugins/chattopod"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

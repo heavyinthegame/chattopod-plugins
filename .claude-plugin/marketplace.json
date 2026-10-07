@@ -1,0 +1,16 @@
+{
+  "name": "chattopod",
+  "owner": {
+    "name": "Boson",
+    "email": "tex64ai@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "chattopod",
+      "source": "./plugins/chattopod-claude",
+      "description": "会話で「音声にして」と頼むと、資料・本・リサーチ結果から自分専用の日本語ポッドキャストを作り、会話内で聴けます。",
+      "version": "0.3.1",
+      "category": "productivity"
+    }
+  ]
+}

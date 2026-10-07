@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "chattopod": {
+      "type": "http",
+      "url": "https://chattopod.com/mcp"
+    }
+  }
+}

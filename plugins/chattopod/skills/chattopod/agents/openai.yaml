@@ -1,0 +1,12 @@
+interface:
+  display_name: "ChatToPod"
+  short_description: "会話の内容から日本語の音声と章立てを作り、会話内で聴く"
+  default_prompt: "$chattopod で、この内容を音声にして"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "chattopod"
+      description: "日本語の音声作成と会話内再生"
+      transport: "streamable_http"
+      url: "https://chattopod.com/mcp"
