@@ -1,6 +1,6 @@
 {
   "name": "chattopod",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "会話で「音声にして」と頼むと、資料・本・リサーチ結果から自分専用の日本語ポッドキャストを作り、会話内で聴けます。",
   "author": {
     "name": "Boson",
@@ -14,5 +14,11 @@
     "podcast",
     "audio",
     "Japanese"
-  ]
+  ],
+  "icon": "./assets/logo.png",
+  "documentationUrl": "https://chattopod.com/docs/chattopod.md",
+  "supportUrl": "https://chattopod.com/support.html",
+  "privacyPolicyUrl": "https://chattopod.com/legal/privacy.html",
+  "termsOfServiceUrl": "https://chattopod.com/legal/terms.html",
+  "repository": "https://github.com/heavyinthegame/chattopod-plugins"
 }
