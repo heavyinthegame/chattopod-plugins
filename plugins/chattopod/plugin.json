@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "chattopod",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Create a personal Japanese podcast from your conversation and listen in ChatGPT.",
   "author": {
     "name": "Boson",
@@ -32,13 +32,19 @@
         "longDescription": "For users aged 18 and over.\n\nAsk ChatToPod to turn the material in your conversation into a Japanese podcast. Use work documents to understand your own tasks, listen to a text you are permitted to use, catch up on research during your commute, or get an explanation based on your lecture notes.\n\nThe conversation prepares the script and chapters for your request. ChatToPod generates a natural, single-speaker recording and shows the script and player in the conversation. You can read chapter text, listen to completed chapters while later chapters are being generated, change playback speed, and download an MP3 for a chapter or the complete program.\n\nChoose a male or female voice, reopen a program you made earlier, stop unstarted generation, or ask to remake a completed chapter. Only your own programs are accessible. This plugin generates Japanese audio; it does not clone voices, create multi-speaker recordings, edit uploaded audio, or publish public sharing links. Audio generation requires available usage time on the connected account.",
         "supportURL": "https://chattopod.com/support.html",
         "logo": "./assets/logo.png",
-        "composerIcon": "./assets/composer-icon.png"
+        "composerIcon": "./assets/composer-icon.png",
+        "logoDark": "./assets/logo.png",
+        "composerIconDark": "./assets/composer-icon.png",
+        "capabilities": [
+          "Interactive",
+          "Write"
+        ]
       },
       "review": {
         "test_cases": {
           "positive": [
             {
-              "description": "Core workflow. Start a new anonymous OAuth connection dedicated to review; no Google sign-in, mailbox, password, or personal data is required. Keep this connection for all eight cases and use only the supplied general sample texts. Aim to finish the eight-case walkthrough within five minutes. This has not yet been run or measured. Wait for actual completion before asserting that all audio is ready.",
+              "description": "Core workflow. Start one anonymous OAuth connection dedicated to review; no Google sign-in, mailbox, password, or personal data is required. Keep this connection for all eight cases and use the supplied sample texts. The October 7 ChatGPT walkthrough generated two sample programs using 37 seconds of allowance. Wait for actual completion before asserting that all audio is ready. The screen recording has trimmed idle waits and contains no audio track.",
               "prompt": "次の文章をもとに、要点だけを日本語の短いポッドキャストにして。原稿は180文字以内で。CPUは処理の順番を管理し、GPUは多くの計算を並行して行います。AIの計算では、両方の役割を理解するとシステム全体が見えてきます。",
               "tools_triggered": "create_audio",
               "expected_behavior": "Call create_audio once with a Japanese script no longer than 180 characters based on the supplied material and chapter start_text copied exactly from that text. Omit voice to use the saved preference and omit output_mode or use chapters. Return one in-conversation script and player. The player updates the same program while generation proceeds. Completed chapter audio has a positive measured duration and can be played. Do not call show_audio or repeatedly call get_audio to add players."
@@ -52,8 +58,8 @@
             {
               "description": "Redisplay an existing program. Before this case, complete the core-workflow case on the same anonymous review connection. Identify the program from the supplied CPU/GPU topic and the actual list response; do not invent an audio ID.",
               "prompt": "さっき作ったCPUとGPUの話を、もう一度聴きたい。プレーヤーを表示して。",
-              "tools_triggered": "list_audio, show_audio",
-              "expected_behavior": "Use list_audio to find the review connection's CPU/GPU program, then call show_audio once with that returned program ID. Return the existing script and player. Do not call create_audio, retry_audio, or remake_chapter. Do not create or charge for another recording."
+              "tools_triggered": "show_audio; list_audio if the earlier returned ID is unavailable",
+              "expected_behavior": "Use the program ID returned by the earlier CPU/GPU creation, or use list_audio to find that program if its ID is unavailable. Call show_audio once with that verified ID. Return the existing script and player. Do not call create_audio, retry_audio, or remake_chapter. Do not create or charge for another recording."
             },
             {
               "description": "Persist a voice preference and inspect the account without generating audio. Continue with the same anonymous review connection. No registered user credentials are needed; the setting applies only to that connection.",
@@ -62,10 +68,10 @@
               "expected_behavior": "Call set_voice with voice=female and get_account for the connected account. Report the saved female voice and remaining time from the returned balance_seconds. Do not infer an extra allowance, generate audio, or display purchase plans or an upgrade link."
             },
             {
-              "description": "Explicit deletion of review data only. Before this case, complete the verbatim two-paragraph reading case on the same anonymous review connection. Delete only that sample recording. Other programs must remain unchanged.",
-              "prompt": "このテストで作った、朝の道から始まる二段落の読み上げを、原稿ごと削除して。他の番組は残して。",
-              "tools_triggered": "list_audio, delete_audio",
-              "expected_behavior": "Use list_audio to identify the matching sample recording, then call delete_audio with only its returned ID. If more than one program matches, clarify the exact target before deletion. Report deletion only after the tool confirms it. Do not delete other recordings or the account."
+              "description": "Confirm completion without adding a player. Continue with the same anonymous review connection after the core-workflow case. This checks that a status inquiry does not create duplicate player cards.",
+              "prompt": "CPUとGPUの番組が完成しているか、作成状態を確認して。プレーヤーは追加しなくていい。",
+              "tools_triggered": "get_audio",
+              "expected_behavior": "Use the earlier returned program ID, or list_audio if it is unavailable, then call get_audio. Report the actual status and measured duration from the result. Do not call create_audio, show_audio, retry_audio, or remake_chapter. Do not add a player or charge for another recording."
             }
           ],
           "negative": [
@@ -84,7 +90,8 @@
           ]
         },
         "commerce_description": "ChatToPod is a digital audio-generation service. Users may connect an existing account and use its available allowance, including an existing paid subscription. The plugin and OAuth authorization screens do not sell subscriptions, show plan prices, initiate checkout, or promote upgrades. Separately from ChatGPT, the public ChatToPod website uses Stripe for monthly subscriptions: Basic USD 6 for 120 minutes, Plus USD 16 for 300 minutes, and Pro USD 35 for 600 minutes, tax included. Existing recordings remain accessible after cancellation. Users must be aged 18 or over.",
-        "commerce": true
+        "commerce": true,
+        "demo_recording_url": "https://chattopod.com/demos/chattopod-review-20261007.mp4"
       },
       "publication": {
         "release_notes": "Package the ChatToPod workflow, branded icons, and the authenticated remote connection together. Add ChatGPT and Claude distribution archives and marketplace catalogs. Claude users can upload the plugin in Customize > Plugins and connect the bundled connector without entering an MCP URL. Retain the single-player generation workflow and separate account management from new subscription purchases.",

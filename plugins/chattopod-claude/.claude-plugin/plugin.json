@@ -1,6 +1,6 @@
 {
   "name": "chattopod",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "会話で「音声にして」と頼むと、資料・本・リサーチ結果から自分専用の日本語ポッドキャストを作り、会話内で聴けます。",
   "author": {
     "name": "Boson",
