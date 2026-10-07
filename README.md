@@ -14,6 +14,6 @@ ChatGPT: [download the package](https://chattopod.com/downloads/chattopod-chatgp
 
 Public store listing is not yet approved. Private installation and marketplace distribution do not imply store approval.
 
-Version: 0.3.4. License: Proprietary. For users aged 13 and over. Minors need permission from a parent or legal guardian. Audio generation requires available usage time.
+Version: 0.3.5. License: Proprietary. Audio generation is available to users aged 18 and over. Audio generation requires available usage time.
 
 [Website](https://chattopod.com) · [Guide](https://chattopod.com/docs/chattopod.md) · [Support](https://chattopod.com/support.html) · [Privacy](https://chattopod.com/legal/privacy.html) · [Terms](https://chattopod.com/legal/terms.html)

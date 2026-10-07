@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "chattopod",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Create a personal Japanese podcast from your conversation and listen in ChatGPT.",
   "author": {
     "name": "Boson",
@@ -29,7 +29,7 @@
           "この本の原文を、そのまま読み上げて",
           "このニュースを、前提から説明する番組にして"
         ],
-        "longDescription": "For users aged 13 and over. Minors need permission from a parent or legal guardian.\n\nAsk ChatToPod to turn the material in your conversation into a Japanese podcast. Use work documents to understand your own tasks, listen to a text you are permitted to use, catch up on research during your commute, or get an explanation based on your lecture notes.\n\nThe conversation prepares the script and chapters for your request. ChatToPod generates a natural, single-speaker recording and shows the script and player in the conversation. You can read chapter text, listen to completed chapters while later chapters are being generated, change playback speed, and download an MP3 for a chapter or the complete program.\n\nChoose a male or female voice, reopen a program you made earlier, stop unstarted generation, or ask to remake a completed chapter. Only your own programs are accessible. This plugin generates Japanese audio; it does not clone voices, create multi-speaker recordings, edit uploaded audio, or publish public sharing links. Audio generation requires available usage time on the connected account.",
+        "longDescription": "Audio generation is available to users aged 18 and over. The listing and supported material contain no mature or adult content.\n\nAsk ChatToPod to turn the material in your conversation into a Japanese podcast. Use work documents to understand your own tasks, listen to a text you are permitted to use, catch up on research during your commute, or get an explanation based on your lecture notes.\n\nThe conversation prepares the script and chapters for your request. ChatToPod generates a natural, single-speaker recording and shows the script and player in the conversation. You can read chapter text, listen to completed chapters while later chapters are being generated, change playback speed, and download an MP3 for a chapter or the complete program.\n\nChoose a male or female voice, reopen a program you made earlier, stop unstarted generation, or ask to remake a completed chapter. Only your own programs are accessible. This plugin generates Japanese audio; it does not clone voices, create multi-speaker recordings, edit uploaded audio, or publish public sharing links. Audio generation requires available usage time on the connected account.",
         "supportURL": "https://chattopod.com/support.html",
         "logo": "./assets/logo.png",
         "composerIcon": "./assets/composer-icon.png",
@@ -89,16 +89,16 @@
             }
           ]
         },
-        "commerce_description": "ChatToPod is a digital audio-generation service. Users may connect an existing account and use its available allowance, including an existing paid subscription. The plugin and OAuth authorization screens do not sell subscriptions, show plan prices, initiate checkout, or promote upgrades. Separately from ChatGPT, the public ChatToPod website uses Stripe for monthly subscriptions: Basic USD 6 for 120 minutes, Plus USD 16 for 300 minutes, and Pro USD 35 for 600 minutes, tax included. Existing recordings remain accessible after cancellation. Users must be aged 13 or over; minors need permission from a parent or legal guardian.",
+        "commerce_description": "ChatToPod is a digital audio-generation service. Users may connect an existing account and use its available allowance, including an existing paid subscription. The plugin and OAuth authorization screens do not sell subscriptions, show plan prices, initiate checkout, or promote upgrades. Separately from ChatGPT, the public ChatToPod website uses Stripe for monthly subscriptions: Basic USD 6 for 120 minutes, Plus USD 16 for 300 minutes, and Pro USD 35 for 600 minutes, tax included. Existing recordings remain accessible after cancellation. Audio generation is available to users aged 18 and over.",
         "commerce": true,
         "demo_recording_url": "https://chattopod.com/demos/chattopod-review-20261007.mp4"
       },
       "publication": {
-        "release_notes": "Support general audiences aged 13 and over, with parental permission for minors. Keep the branded icon, bundled skill and remote connection, single-player generation, separate account settings, and recorded review walkthrough.",
+        "release_notes": "Clarify that audio generation is available to adults aged 18 and over, consistent with the upstream Gemini API terms. Keep the content appropriate for general audiences, with no mature or adult content, and no age-confirmation screen. Preserve the branded icon, bundled connection, and recorded review walkthrough.",
         "translations": {
           "ja-JP": {
             "subtitle": "会話から自分専用のポッドキャストを作成",
-            "description": "13歳以上の方が利用できます。未成年の方は保護者の同意が必要です。\n\n会話で「音声にして」と頼むと、自分の知りたい話を日本語のポッドキャストにできます。仕事の資料から自分の業務を理解する、本の原文を聴く、調べた結果を通勤中に聴く、講義資料をもとに説明してもらう。使う素材と知りたい切り口に合わせて、会話が原稿と章立てを作ります。\n\nChatToPodは原稿を自然な一人語りの音声にして、会話内に原稿とプレーヤーを表示します。後の章を作っている間も、完成した章から聴けます。章の本文を読む、倍速を変える、章ごとや全体のMP3を保存することもできます。\n\n男性・女性の声を選び、以前の番組をもう一度表示したり、未開始の生成を止めたり、完成した章の作り直しを頼めます。聴けるのは本人の番組だけです。音声の作成には、接続したアカウントの利用時間が必要です。声の複製、複数人の会話音声、既存音声の編集、公開リンクによる共有には対応していません。"
+            "description": "音声生成は18歳以上の方が利用できます。成人向けの内容を扱いません。\n\n会話で「音声にして」と頼むと、自分の知りたい話を日本語のポッドキャストにできます。仕事の資料から自分の業務を理解する、本の原文を聴く、調べた結果を通勤中に聴く、講義資料をもとに説明してもらう。使う素材と知りたい切り口に合わせて、会話が原稿と章立てを作ります。\n\nChatToPodは原稿を自然な一人語りの音声にして、会話内に原稿とプレーヤーを表示します。後の章を作っている間も、完成した章から聴けます。章の本文を読む、倍速を変える、章ごとや全体のMP3を保存することもできます。\n\n男性・女性の声を選び、以前の番組をもう一度表示したり、未開始の生成を止めたり、完成した章の作り直しを頼めます。聴けるのは本人の番組だけです。音声の作成には、接続したアカウントの利用時間が必要です。声の複製、複数人の会話音声、既存音声の編集、公開リンクによる共有には対応していません。"
           }
         },
         "countries": []
